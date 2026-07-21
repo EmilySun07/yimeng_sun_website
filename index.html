@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yimeng Sun | Risk & Analytics</title>
+  <meta name="description" content="Yimeng Sun is a Statistics & Analytics student at UNC Chapel Hill with experience in specialty insurance, oncology research, and model-based meta-analysis." />
+  <style>
+    :root {
+      --ink: #14213d;
+      --muted: #526173;
+      --line: #d8e1ea;
+      --paper: #fbfcf8;
+      --panel: #ffffff;
+      --accent: #0f766e;
+      --accent-soft: #dff4ef;
+      --blue-soft: #edf5fb;
+      --shadow: 0 18px 45px rgba(20, 33, 61, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(251, 252, 248, 0.88);
+      border-bottom: 1px solid rgba(216, 225, 234, 0.75);
+      backdrop-filter: blur(14px);
+    }
+
+    .nav {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 14px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: 0;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .hero {
+      min-height: calc(100svh - 58px);
+      display: grid;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(115deg, rgba(20, 33, 61, 0.96) 0%, rgba(20, 33, 61, 0.9) 40%, rgba(15, 118, 110, 0.66) 100%),
+        radial-gradient(circle at 84% 18%, rgba(255, 255, 255, 0.2), transparent 28%),
+        repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.08) 0 1px, transparent 1px 92px);
+    }
+
+    .hero-inner {
+      position: relative;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 78px 22px 62px;
+      width: 100%;
+      color: #fff;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 22px;
+      padding: 7px 12px;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 999px;
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 0.9rem;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #5eead4;
+    }
+
+    h1 {
+      max-width: 780px;
+      margin: 0;
+      font-size: clamp(3rem, 7vw, 6.4rem);
+      line-height: 0.96;
+      letter-spacing: 0;
+    }
+
+    .hero-copy {
+      max-width: 650px;
+      margin: 26px 0 0;
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 1.2rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 34px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 11px 17px;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      font-weight: 700;
+      transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button.primary {
+      background: #fff;
+      color: var(--ink);
+    }
+
+    .button.secondary {
+      border-color: rgba(255, 255, 255, 0.3);
+      color: #fff;
+    }
+
+    .hero-proof {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      max-width: 860px;
+      margin-top: 64px;
+      color: rgba(255, 255, 255, 0.88);
+    }
+
+    .proof-item {
+      border-top: 1px solid rgba(255, 255, 255, 0.24);
+      padding-top: 14px;
+    }
+
+    .proof-item strong {
+      display: block;
+      font-size: 1.8rem;
+      line-height: 1.1;
+      color: #fff;
+    }
+
+    main {
+      overflow: hidden;
+    }
+
+    section {
+      padding: 76px 22px;
+    }
+
+    .wrap {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .section-kicker {
+      color: var(--accent);
+      font-weight: 800;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+    }
+
+    h2 {
+      margin: 8px 0 18px;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.05;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+      gap: 46px;
+      align-items: start;
+    }
+
+    .highlight-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 12px;
+    }
+
+    .highlight {
+      padding: 18px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .highlight strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .band {
+      background: #f1f7f6;
+      border-block: 1px solid var(--line);
+    }
+
+    .timeline {
+      display: grid;
+      gap: 28px;
+      margin-top: 34px;
+    }
+
+    .role {
+      display: grid;
+      grid-template-columns: 260px minmax(0, 1fr);
+      gap: 30px;
+      padding-top: 28px;
+      border-top: 1px solid var(--line);
+    }
+
+    .role-meta {
+      color: var(--muted);
+    }
+
+    .role-meta h3 {
+      margin: 0 0 4px;
+      color: var(--ink);
+      font-size: 1.2rem;
+    }
+
+    .role-meta p,
+    .role-body p {
+      margin: 0;
+    }
+
+    .role-body ul,
+    .publication-list {
+      margin: 0;
+      padding-left: 1.2rem;
+      color: var(--muted);
+    }
+
+    .role-body li + li,
+    .publication-list li + li {
+      margin-top: 8px;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 32px;
+    }
+
+    .skill-group {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .skill-group h3 {
+      margin: 0 0 12px;
+      font-size: 1rem;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .chip {
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: var(--blue-soft);
+      color: #26435d;
+      font-size: 0.9rem;
+      font-weight: 650;
+    }
+
+    .publications {
+      background: var(--ink);
+      color: #fff;
+    }
+
+    .publications .section-kicker {
+      color: #5eead4;
+    }
+
+    .publications .lead,
+    .publications .publication-list {
+      color: rgba(255, 255, 255, 0.78);
+    }
+
+    .publication-list {
+      margin-top: 28px;
+      padding-left: 1.2rem;
+    }
+
+    .publication-list strong {
+      color: #fff;
+    }
+
+    .cta {
+      text-align: center;
+    }
+
+    .cta .lead {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .contact-link {
+      padding: 11px 15px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+      font-weight: 700;
+      box-shadow: var(--shadow);
+    }
+
+    footer {
+      padding: 26px 22px 38px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.92rem;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 650ms ease, transform 650ms ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 820px) {
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 2px;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .hero-inner {
+        padding-top: 72px;
+      }
+
+      .hero-proof,
+      .about-grid,
+      .role,
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-proof {
+        margin-top: 42px;
+      }
+
+      section {
+        padding: 58px 20px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .nav-links {
+        gap: 13px;
+        font-size: 0.88rem;
+      }
+
+      .hero-actions,
+      .contact-links {
+        flex-direction: column;
+      }
+
+      .button,
+      .contact-link {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="brand" href="#top">Yimeng Sun</a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#publications">Publications</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-inner">
+        <div class="eyebrow reveal">UNC Chapel Hill | Statistics & Analytics | Risk & Analytics</div>
+        <h1 id="hero-title" class="reveal">Yimeng Sun</h1>
+        <p class="hero-copy reveal">
+          Statistics & Analytics student and Honors Carolina scholar connecting actuarial thinking,
+          specialty insurance, and oncology research through careful data work.
+        </p>
+        <div class="hero-actions reveal">
+          <a class="button primary" href="mailto:yimengs@unc.edu">Email Yimeng</a>
+          <a class="button secondary" href="https://www.linkedin.com/in/yimeng-sun-emily/" target="_blank" rel="noopener">View LinkedIn</a>
+        </div>
+        <div class="hero-proof reveal" aria-label="Career highlights">
+          <div class="proof-item">
+            <strong>JNCI</strong>
+            Accepted manuscript on immune checkpoint inhibitors and quality of life
+          </div>
+          <div class="proof-item">
+            <strong>1000+</strong>
+            Clinical trial data points extracted and cleaned for oncology research
+          </div>
+          <div class="proof-item">
+            <strong>1,500+</strong>
+            Students reached through campus marketing and outreach
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap about-grid">
+        <div class="reveal">
+          <div class="section-kicker">About</div>
+          <h2>Analytical training with a human-centered research lens.</h2>
+          <p class="lead">
+            Yimeng is pursuing a B.S. in Statistics and Analytics with a minor in Neuroscience at
+            the University of North Carolina at Chapel Hill. Her work spans risk analysis,
+            specialty insurance, and patient-centered oncology research, with a focus on turning
+            complex evidence into clear, decision-ready insight.
+          </p>
+        </div>
+        <div class="highlight-list reveal">
+          <div class="highlight">
+            <strong>Education</strong>
+            UNC Chapel Hill, B.S. Statistics and Analytics, Minor in Neuroscience, expected May 2028.
+          </div>
+          <div class="highlight">
+            <strong>Honors</strong>
+            Honors Carolina scholar in a highly competitive four-year academic program.
+          </div>
+          <div class="highlight">
+            <strong>Actuarial Focus</strong>
+            SOA Exam P completed; Exam FM planned for October.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="experience" class="band">
+      <div class="wrap">
+        <div class="section-kicker reveal">Experience</div>
+        <h2 class="reveal">Insurance, research, and campus growth work.</h2>
+        <div class="timeline">
+          <article class="role reveal">
+            <div class="role-meta">
+              <h3>Berylline Insurance Group</h3>
+              <p>Specialty Insurance Intern</p>
+              <p>Jun. 2026 - Present</p>
+            </div>
+            <div class="role-body">
+              <ul>
+                <li>Completed training on E&S markets, carrier structures, MGAs, brokers, reinsurers, underwriting, compliance, claims, and loss control.</li>
+                <li>Researched Cyber Insurance for Small Businesses, presenting coverage design, key players, and market trends.</li>
+                <li>Analyzed admitted and specialty carriers such as Aetna and Tokio Marine HCC across product lines, regulatory history, and market positioning.</li>
+                <li>Developed E&S risk pitches for non-standard exposures, applying underwriting logic to evaluate coverage needs and market opportunity.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="role reveal">
+            <div class="role-meta">
+              <h3>UNC Eshelman School of Pharmacy, Dr. Zhou Lab</h3>
+              <p>Undergraduate Research Assistant</p>
+              <p>Jan. 2025 - Present</p>
+            </div>
+            <div class="role-body">
+              <ul>
+                <li>Screened oncology trial publications for study design, treatment setting, endpoint availability, and longitudinal data requirements.</li>
+                <li>Built longitudinal clinical trial datasets with 1000+ data points from papers, FDA labels, ClinicalTrials.gov, and regulatory documents.</li>
+                <li>Contributed to JNCI-accepted model-based meta-analysis linking longitudinal quality-of-life trajectories with overall survival in ICI trials.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="role reveal">
+            <div class="role-meta">
+              <h3>Yami Buy</h3>
+              <p>Campus Ambassador</p>
+              <p>Aug. 2025 - Present</p>
+            </div>
+            <div class="role-body">
+              <ul>
+                <li>Reached 1,500+ students through social media and offline promotions; distributed 300+ welcome gift bags.</li>
+                <li>Planned and executed 2 campus events with student organizations, coordinating logistics and outreach.</li>
+                <li>Collected student feedback to optimize campaign strategy and improve product adoption among international students.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="wrap">
+        <div class="section-kicker reveal">Skills</div>
+        <h2 class="reveal">Tools for quantitative, research, and risk-focused work.</h2>
+        <div class="skills-grid">
+          <div class="skill-group reveal">
+            <h3>Programming</h3>
+            <div class="chips">
+              <span class="chip">Python</span>
+              <span class="chip">Java</span>
+              <span class="chip">SQL</span>
+              <span class="chip">R</span>
+              <span class="chip">SAS</span>
+            </div>
+          </div>
+          <div class="skill-group reveal">
+            <h3>Quantitative Focus</h3>
+            <div class="chips">
+              <span class="chip">Statistics</span>
+              <span class="chip">Data Analysis</span>
+              <span class="chip">Model-Based Meta-Analysis</span>
+              <span class="chip">Actuarial Science</span>
+            </div>
+          </div>
+          <div class="skill-group reveal">
+            <h3>Languages</h3>
+            <div class="chips">
+              <span class="chip">Mandarin</span>
+              <span class="chip">English</span>
+              <span class="chip">Japanese</span>
+              <span class="chip">French</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="publications" class="publications">
+      <div class="wrap">
+        <div class="section-kicker reveal">Publications</div>
+        <h2 class="reveal">Selected scholarly work in oncology, quality of life, and healthcare systems.</h2>
+        <p class="lead reveal">
+          Current research centers on patient-reported outcomes, longitudinal clinical trial evidence,
+          and how statistical modeling can improve interpretation of treatment value.
+        </p>
+        <ul class="publication-list reveal">
+          <li><strong>Sun Y</strong>, Chang S, Tang K, LeBlanc MR, Palmer AC, Ahamadi M, Zhou J. When survival improves but quality of life does not: a model-based meta-analysis of immune checkpoint inhibitors. <em>JNCI: Journal of the National Cancer Institute</em>, 2026, djag228. DOI: 10.1093/jnci/djag228.</li>
+          <li>Zou Y*, <strong>Sun Y*</strong>, Ravva S, Wagner LI, Zhou J. A Model-Based Meta-Analysis of Pembrolizumab Effects on Patient-Reported Quality of Life: Advancing Patient-Centered Oncology Drug Development. <em>CPT Pharmacometrics Syst Pharmacol</em>, 2025. DOI: 10.1002/psp4.70106. (*Co-first authors)</li>
+          <li><strong>Sun Y</strong>, Zhao E. Mathematical Models for Rural Doctor Service Efficiency: Applying Queuing Theory and Operations Research to Improve Healthcare Services. <em>SocArXiv preprint</em>, 2023. DOI: 10.31235/osf.io/nvhmf.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="contact" class="cta">
+      <div class="wrap reveal">
+        <div class="section-kicker">Contact</div>
+        <h2>Open to actuarial, analytics, insurance, and research opportunities.</h2>
+        <p class="lead">
+          For internship opportunities, research collaboration, or analytics-focused roles, reach out by email or LinkedIn.
+        </p>
+        <div class="contact-links">
+          <a class="contact-link" href="mailto:yimengs@unc.edu">yimengs@unc.edu</a>
+          <a class="contact-link" href="https://www.linkedin.com/in/yimeng-sun-emily/" target="_blank" rel="noopener">LinkedIn Profile</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Yimeng Sun. Built as a single-file personal website.</p>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.14 });
+
+    document.querySelectorAll(".reveal").forEach((element) => observer.observe(element));
+  </script>
+</body>
+</html>
